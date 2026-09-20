@@ -1,0 +1,18 @@
+---
+# cPanel Git Version Control deploy task for admin.meshmadrasa.com.
+#
+# This file lives in web/ (not just in build/web) so that `flutter build web`
+# copies it into the deploy repo on every build. Keeping it only in build/web
+# means a `flutter clean` silently deletes it and deployments stop copying
+# anything, with no error.
+#
+# cPanel runs these tasks after "Deploy HEAD Commit". Pushing to GitHub alone
+# does not deploy — cPanel must pull (Update from Remote) and then deploy.
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/$USER/public_html/admin.meshmadrasa.com/
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/cp -R * $DEPLOYPATH
+    # `*` does not match dotfiles, so .htaccess has to be copied by name.
+    # Without it the SPA fallback is missing and every deep link 404s.
+    - /bin/cp -f .htaccess $DEPLOYPATH

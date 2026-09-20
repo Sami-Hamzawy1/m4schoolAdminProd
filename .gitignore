@@ -1,0 +1,2 @@
+# Flutter's local build marker is not part of the web release.
+.last_build_id
