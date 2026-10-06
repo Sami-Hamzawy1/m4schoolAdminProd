@@ -65722,7 +65722,8 @@ s=p}for(;;)switch(s){case 0:d={}
 c=A.d3(a1,!1,t.Kh)
 b=n.d
 a=b.r
-if(a==null)a=""
+if(a==="trial-14-day")a="Manual Plan"
+else if(a==null)a=""
 i=$.aw()
 h=new A.cu(new A.bW(a,B.b_,B.ax),i)
 a=b.w
